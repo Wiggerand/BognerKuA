@@ -1,6 +1,16 @@
+Funktionen von Github:
+git ist eine Versionsverwaltung, ermöglicht also auf frühere Versionsstaende einer Datei zuzugreifen
+- git wird in der Softwareentwicklung immer verwendet
+- git ermoeglicht komfortabel das Arbeiten mehrerer Personen an einem Projekt
+
+Kostenfreie git-Server 
+Website github.com
+- eigene Projekte koennen hier abgelegt werden
+- Projekte anderer Personen stehen hier zur Ansicht zur Verfuegung
+
 Erstellen eines lokalen Repositorys:
 1. Odner erstellen 
-	mkdir EuP
+	mkdir BognerEuP
 2. Ordner mit git initialisieren
 	git init
 3. Datei erzeugen zum testen
@@ -13,3 +23,9 @@ Erstellen eines lokalen Repositorys:
 	git remote add origin https://github.com/wiggerand/KuA.git
 7. Die lokalen Aenderungen zum Remote Repos hochladen
 	git push -u origin master
+
+Aktualisieren eines Projekts
+1. mit cd in das Basisverzeichnis des Verzeichnis des Projektes gehen
+2. git add . -A
+3. git commit -am 'Text zur Charakterisierung'
+4. git push origin master
