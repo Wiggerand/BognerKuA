@@ -1,0 +1,8 @@
+*********************Drei Grundprinzipien von Linux ******************
+
+	- Alles ist eine Datei
+
+	- Sag nur was, wenn du was zu sagen hast: Das Ergebnis eines Befehls wird nur im Fall eines fehlers 
+	  oder wenn das Ergebnis explizit angefordert wird ausgegeben
+
+	- Kleine spezialisierte Programme: ein Programm erledigt nur eine Aufgabe, aber die Perfekt

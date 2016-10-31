@@ -1,0 +1,6 @@
+www.netacad.com
+
+Chapter1
+Ein Alias ist ein Befehl z.B. 
+alias mycal="cal 2016"
+mit "mycal" wird in dem Fall der Kalender von 2016 angezeigt in der Konsole
