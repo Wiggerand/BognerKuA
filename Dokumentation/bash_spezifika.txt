@@ -2,29 +2,56 @@
 
 	whoami		Als wer bin ich angemeldet
 
+Standarddeskriptoren
+
+	IN: Tastatur
+	Out: Bildschirm
+	ERR: Fehler 
+
 Bash - Operatoren:
 
 	>		Das Ergebnis eines Befehls (links von >) wird in eine angegebene Ausgabe geschoben 		
 
 	>>		Dito, aber das Ergebnis wird angehängt
+	ls /etc >> datei namen.dat
+			Der Bashinterpreter schaut nach, ob es eine Datei <datei_namen.dat>
+			gibt. Falls ja, wird das Ergebnis des Befehls <ls> angehängt; falls nein, wird eine Datei mit dem Namen 
+			<datei_namen.dat> erzeugt und die Ausgabe des Befehls <ls> reingeschrieben
 
 	| 		pipe: Das Ergebnis wird an das nächste Programm zur Weiterverarbeitung übergeben
 			ls -l /etc | less	Die Anzeige der Dateien/Ordner vom Verzeichnis etc wird an das Programm less
 			übergeben, das eine seitenweise Anzeige von Text beherrscht
 
 	cat > test.txt 		Ermöglicht eine Eingabe und erstellt eine txt Datei
-						strg + d 	Beendet die Eingabe und speichert diese in die Datei test.txt
+						strg + d 	Beendet die Eingabe und speichert diese in die Datei <test.txt>
 
 Links
 
 	Hardlink
 		ln <dateiname> <dateiname-lnk>		Erzeugt eine neue Referenz auf eine Datei in der File-Tabelle 
-											der Festplatte
+											der Festplatte. Jede Datei hat mindestens einen Hardink.
 
 	Softlink
 		ln -s <verzeichnisname> <verzeichnisname-neu>	Da Hardlinks nur für Dateien möglich sind, gibt es den 
 														Softlink für Verzeichnisse.
 														Es wird eine neue Datei erstellt, deren Inhalt der 
-														Verweis auf das Verzeichnis ist 
+														Verweis auf das Verzeichnis ist. 
+Variablen auf der Konsole
 
-														 
+		Definition:
+			Variablenname aus Buchstaben, keine Zahlen als 1. Buchstaben, keine
+			Sonderzeichen, dann Zuweisungsoperator ohne Leerzeichen, dann Wert
+			var="Zeichenkette"
+		Verwendung:
+			$ + Variablenname $var
+				echo $var
+
+Kommandosubstitution mit Backticks	
+
+		var=`ls`
+			speichert in der variable var die Ausgabe des Befehls
+
+		echo $var
+			gibt das Ergebnis des Befehls aus													 
+
+
