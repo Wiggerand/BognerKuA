@@ -1,0 +1,24 @@
+GREP:
+
+	Filter aus einem Input-Stream Zeilen heraus, die einem bestimmten Suchmuster entsprechen.
+	Das Suchmuster wird als RegEx (Regular Expression) übergeben.
+
+Links:
+	http://de.linwiki.org/wiki/Linuxfibel_-_Unix-Werkzeuge_-_Grep
+	http://openbook.galileocomputing.de/shell_programmierung/shell_013_001.htm
+	http://www.prontosystems.org/tux/grep
+
+Beispiel:
+
+	lspci | grep VGA
+		Die Ausgabe des Befehls lspci (Ausgabe der PCI-Komponenten des Systems)
+		wird über die Pipe an den Befehl grep weitergegeben.
+		Grep sucht in dem Inputstream nach der Zeichenfolge VGA.
+		Alle Zeilen die er findet gibt er an den Bildschirm zur Ansicht
+
+	grep wiggerand /etc/passwd
+		Der Befehl grep wird aufgerufen.
+		Der erste Parameter enthält das Suchmuster wiggerand
+		Der zweite Parameter bezeichnet die Datei /etc/passwd in der die Übereinstimmung 
+		gefunden werden soll
+
