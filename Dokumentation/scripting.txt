@@ -1,0 +1,128 @@
+Vorraussetzungen
+	SheBang-Zeile:
+		Die erste Zeile enthält den Pfad zum interpretierenden Programm
+			#!/bin/bash
+
+	Berechtigungen:
+		Damit eine Datei audgeführt werden kann, 
+		muss das Execute_Bit gesetzt sein, d.h. in den 
+-rw-rw-r-- 1 wiggerand wiggerand   43 Nov 21 12:04 test.sh
+
+		Berechtigungen wird ein x angezeigt.
+			chmod u+x test.sh /Berechtigung zum Ausführen setzen/
+-rwxrw-r-- 1 wiggerand wiggerand   43 Nov 21 12:04 test.sh
+
+
+	Es ist eine absolute Pfadeingabe notwendig:
+		./test.sh 'dies ist ein Parameter'
+			Aufruf aus dem aktuellen Ordner
+
+Kontex variablen
+	Definition:
+
+trinken='Whiskey und Zigarre'
+	Mehr als ein Wort muss in Anführungszeichen
+	Zwischen Zuweisung und Variablenname keine Leerzeichen
+
+	Ausgabe:
+echo 'Hier wird die Variable "trinken" ausgegeben'
+echo $trinken
+
+	Definierte Variablen enthalten zu Beginn ein $ Zeichen. Das $ Zeichen bedeutet für den Interpreter generell eine Variable
+
+Variablen - intern
+	echo 'Hier kommt $0'
+	echo $0
+	Der Name der aufgerufenen Datei $0
+	echo 'Jetzt kommt $1'
+echo $1
+	$1 Der Name des ersten Parameters
+$# Anzahl der Skript-Kommandos
+$? Exit-Status des letzten Befehls, wurde der Befehl erfolgreich ausgegeben
+
+	KommandosubstitutionKommandosubstitution
+		echo 'Das Datum wird ausgegeben'
+		echo `date`
+		echo $(date)
+	Der Shell-Befehl date wird ausgeführt und anschliessend an das Programm echo übergeben
+
+		echo 'Das Datum wird ausgegeben'
+		echo `date`
+		echo $(date)
+	Der Shell-Befehl date wird ausgeführt und anschliessend an das Programm echo übergeben
+
+Kommandos in Variablen
+	remove='rm test.txt'
+	$remove
+
+
+String Konkatenierung
+	string_1=Heia
+	string_2=Popeia
+	string="${string_1} ${string_2} was raschelt im Stroh"
+	echo "$string_1 $string_2 aber im Heu"
+	echo $string
+
+If Anweisung
+
+	read -p "Ihre Eingabe: " var_name
+	echo "Die Eingabe lautete:  $var_name"
+
+	if [[ $var_name = "q" ]]
+	then
+        echo 'Ist ein prima q'
+	elif [[ $var_name = "m" ]]
+	then
+        echo 'Jo, ein m'
+	else
+        echo 'Irgendwas anderes'
+	fi
+
+	Schleifen:
+		#!/bin/bash
+		--------------------------------------------
+		Die Schleife wird solange ausgeführt bis der Wert
+		der Variablen $eingabe true ist, bei false abbruch
+
+		while [[ true ]]
+		do
+        	read -p "Bitte Eingabe machen: " eingabe
+        	echo $eingabe
+		done
+		--------------------------------------------
+		Wiederholung bis der geprüfte Wert ein false ergibt, bei true abbruch
+
+		until [[ false ]]
+		do
+        	read -p "Bitte Eingabe machen: " eingabe
+        	echo $eingabe
+		done
+		--------------------------------------------
+		
+
+	Operatoren
+
+		[[ $var = "q" ]] 	true falls in $var etwas steht außer false oder 0
+		[[ !$var ]]   true falls $var 0 ist, false oder leer
+		----------------------------------------------------------------------------
+		Strings
+		[[ wert1 = 'string']] gibt true wenn der Wert gleich der Zeichenkette ist
+		[[ wert1 != 'string']] gibt true wenn der Wert ungleich der Zeichenkette ist
+		----------------------------------------------------------------------------
+		arithmetische Werte 
+		[[ wert1 -eq wert2 ]] gibt true wenn wert1 gleich wert2
+		[[ wert1 -ne wert2 ]] gibt true wenn wert1 ungleich wert2
+		[[ wert1 -gt wert2 ]] gibt true wenn wert1 größer wert2 (greaterthen)
+		[[ wert1 -lt wert2 ]] gibt true wenn wert1 kleiner wert2 (lowerthen)
+		----------------------------------------------------------------------------
+		Systemoperationen
+		[[ -e $dateiname ]] gibt true wenn Datei vorhanden ist
+		[[ -d $verzeichnis ]] gibt true wenn Verzeichnis vorhanden ist
+		----------------------------------------------------------------------------
+	Aufgabe:
+
+		Erstellen sie ein Skript, das einen Parameter entgegen nimmt und checkt ob es eine datei gibt die so heißt wie der übergebene Parameter. 
+		Aufruf: ./test.sh test.txt
+		Erweiterung: Die Eingabeaufforderung soll solange gezeigt werden, bis der Benutzer ein q eingibt, oder einen vorhandenen Dateinamen.
+
+

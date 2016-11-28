@@ -1,0 +1,15 @@
+vim test.sh  Datei erstellt Shell
+
+#!/etc/bash
+
+echo "Whiskey und Zigarre"
+
+Eingeabmodus schliessen
+:wq
+
+ls -l
+chmod u+x test.sh
+
+./test.sh 			Datei aufrufen
+Ausgabe:
+Whiskey und Zigarre
