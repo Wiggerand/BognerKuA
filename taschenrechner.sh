@@ -13,7 +13,7 @@ runde="0"
 zahl="1"
 while [[ 1 ]]; do
 	read -p "Geben Sie bitte die $zahl. Zahl ein: " counter
-	echo ""
+	
 	echo "--------------------------"
 runde=$((runde+1))
 zahl=$((zahl+1))

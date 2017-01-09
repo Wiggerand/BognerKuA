@@ -15,3 +15,11 @@ Nach der Eingabe von exit lautet die Konsolenausgabe: 'Endergebnis: 33.
 Das Programm wurde beendet.' 
 Wird etwas anderes als eine Zahl eingegeben gibt das Programm aus: 'Falsche Eingabe: xxx kann nicht addiert werden. 
 Geben Sie ausschließlich Zahlen ein.'
+
+3.
+Speichern Sie das Datum in einer Variablen date.
+Speichern Sie den ersten Parameter nach der Eingabeaufforderung in die Variable topic.
+Erzeugen Sie einen Dateinamen, nach dem folgenden Muster: /home/wiggerand/<parameter>notes.txt
+Nutzen Sie die Variable topic und die systemimmanente Variable für das Home Verzeichnis des
+aktuellen Users.
+Erzeugen Sie die Eingabeaufforderung: "Notiz:" und speichern Sie die Eingabe des Users imn der Datei mit Datumangabe.
