@@ -17,3 +17,17 @@ else
 fi
 
 
+#if [[ -e $abfrage ]]
+ #then
+#	echo "Der Eintrag ist vorhanden: "$abfrage
+#else
+#	read -p "Möchten Sie die Datei erstellen j/n?" neu
+#	if [[ $neu == 'j' ]]; then
+#		touch $abfrage
+#	else
+#	echo "Die Datei ist nicht vorhanden und soll auch nicht erstellt werden!"
+#
+#	fi
+
+
+#fi
