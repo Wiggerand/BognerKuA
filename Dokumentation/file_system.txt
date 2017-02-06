@@ -1,3 +1,40 @@
+Dateisysteme in Linux
+	ext4 	Standard
+	xfs 	für große Dateien
+	reiserfs effizient
+	swap 	 Partition für die 					Auslagerungsdatei als ein frei adressierbarer Speicher
+
+Befehle:
+	df -hT #Übersicht über den Speicher
+	du -hs #Größe des benutzten Speichers
+	lsblk -t #Zeigt die Partitionen ein
+
+Berechtigungen:
+	Verzeichnisse und Dateien haben Berechtigungen und Besitzer
+	Beispiel:
+	drwxrwxr-x 2 wiggerand wiggerand 4096 Dez 12 13:28 classwork
+	d steht für die Art des Eintrags (Ordner / Datei)
+	rwxr-xr-x
+		Berechtigungen für:
+			user (Besitzer)
+			gruppe
+			andere - alle
+			r = read (4)
+			w = write (2)
+			x = ausführen (1)
+	Beispiel:
+		Datei sollte: 
+		user: alle Berechtigungen
+		gruppe: lesen, schreiben
+		alle: lesen
+	chmod 764 name_der_datei 
+	chmod -R 766 name_des_ordners #Ordnerinhalt wird rekursiv(weiter vererbt) geändert
+	chmod g+x name_der_datei #gibt der Gruppe das Recht auf ausführen
+	chmod g-x name_der_datei #entzieht das Recht
+	chmod g=rx name_der_datei #überschreibt für Gruppe mit Read und Ausführen
+	sudo chown -R user: group Ordner_name
+	sudo chown -R www-data:root /var/www/webname
+		#ändere für den Ordner webname und alle Unterordner und Dateien den Besitzer in www-data und die Gruppe root
 
 ********************* Anzeigen von Dateien und Ordnern ************************
 

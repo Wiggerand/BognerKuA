@@ -1,0 +1,30 @@
+Befehle: 
+	sudo useradd anton
+		#legt einen Benutzer anton an, ohne Passwort und Console
+	sudo useradd -c 'Peter Pan' -d 
+	/home/subdir/peter -G weitere_gruppe -m -s
+		/bin/bash peter
+	sudo adduser anton
+		#startet ein Menu, das verschiedene Differenzierungen erlaubt
+	passwd
+		#vom eingeloggten user ausgeführt wird das Passwort neu gestezt
+	sudo passwd anton
+		#setzt das Passwort von anton
+	su anton
+		#wechselt zu dem Benutzer anton, loggt sich als dieser ein
+	sudo su anton
+		#wechselt ohne Passwortabfrage
+	sudo userdel -r anton löscht den 			Benutzer mit dem Homeverzeichniss
+	sudo usermod -aG hamburg peter
+		#peter wird zum Mitglied der zusätzlichen Gruppe hamburg, -g
+		hamburg würde die primäre Gruppe des Users ändern
+	sudo groupadd hamburg
+	sudo groupdel hamburg
+		#anlegen und löschen einer Gruppe
+Dateien:
+	/etc/passwd
+		#primäre Datei der Benutzer
+	/etc/shaow
+		#Datei für die Passwörter
+	/etc/group
+		#Datei der gelisteten Gruppen
