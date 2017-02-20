@@ -1,0 +1,46 @@
+Definition Webserver:
+	- basiert auf dem Protokoll http
+	- liefert Webseiten an Clients
+	- enthält Module für Scriptsprachen, z.B. PHP
+	- lauscht standardmässig auf Port 80
+	- Verschlüsselung über https: Protokoll möglich, wird auf Port 443 erwartet
+	- Apache, Nginx, Internet Information Service (IIS)
+
+
+Installation
+	sudo apt-get update
+	sudo apt-get install apache2
+	sudo apt-get install lynx
+
+Hostname setzen
+	sudo hostname -b ubuntuserver.local
+	sudo vim /etc/hostname
+		ubuntuserver.local
+	
+	sudo vim /etc/hosts
+		127.0.0.1 ubuntuserver.local	
+
+Testen der Verbindung
+	lynx http://127.0.0.1
+	lynx http://ubuntuserver.local
+
+	Client
+		http://172.16.161.105
+		http://ubuntuserver.local
+
+PHP Modul
+	sudo apt-get install libapache2-mod-php.7.0
+	sudo a2enmod php7.0
+	sudo service apache2 restart
+
+	Testen der PHP Seite ob es installiert ist
+		cd /var/www/html
+			sudo touch index.php
+			sudo vim index.php
+			<html>
+			<body>
+			<? php phpinfo(); ?>
+			</body>
+			</html>
+			Im browser ubuntuserver.local/index.php
+			

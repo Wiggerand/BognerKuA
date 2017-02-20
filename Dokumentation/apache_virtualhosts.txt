@@ -1,0 +1,21 @@
+Verzeichnis und Dateien anlegen
+	sudo mkdir /var/www/html/webneu
+	sudo touch /var/www/html/webneu/index.php
+	....
+	sudo chown -R www-data:www-data webneu
+
+Virtualhost anlegen
+cd /etc/apache2/sites-available
+sudo vim webneu.conf
+	<Virtualhost *:80>
+		ServerName webneu.ubuntuserver.local
+		DocumentRoot /var/www/html/webneu
+	</Virtualhost>
+
+	sudo a2ensite webneu
+	sudo service apache2 reload
+
+Test im Client-Browser:
+	http://webneu.ubuntuserver.local
+
+	
