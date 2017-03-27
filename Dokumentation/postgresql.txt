@@ -1,0 +1,103 @@
+Datenbank Allgemein
+	Historisch:
+		Es geht darum grosse Mengen an Daten effizient zu verwalten.
+		Das Konzept entstand zwischen 1960 und 1970
+		IBM-Mitarbeiter E.F.Codd
+
+	Datenbankmanagementsystem (DBMS)
+		Die Verwaltund der Daten geschieht mit einer Datenbanksprache ANSI-sql sit die Obermenge, auf der jedes Datenbanksystem eine Erweiterung der Sprache mit zusaätzlichen Elementen und Features zur Verfügung stellt.
+		(Mssql: Transact-Sql, Oracle: plsql)
+			-Datenabfrage und Datenmanipulation (DML)
+			- Verwaltung der Datenbank und Definition der Datenstrukturen (DDL)
+			- Berechtigungssteuerung (DCL)
+
+		Datenbanken
+			Features der grossen Datenbanken:
+				Transactions
+				Eigene Spracherweiterung
+				Skalierung der Grösse der Datenbank und der Server
+				Methoden der Datensicherung
+					IBM - Informix, DB2
+					Oracle
+					Microsoft - MSSQL
+					Postgres
+
+		Kleine Datenbanken:
+			Microsoft - Access
+			Mysql
+			Sqlite
+
+		Typen
+			Relationale Datenorganisation
+				Tabell hat einen eindeutigen Schlüssel (Primary Key), der jede Zeile der Tabelle eindeutig kennzeichnet. Eine andere Tabelle kann zu dieser über den PK in eine Beziehung gesetzt werden
+
+			Objektorientierte Datenbanken
+				Es werden Objekte mit Eigenschaften und Daten verwaltet. Es gibt eine baumartige Hierarchie mit Vererbung
+				DB40, ZODB
+
+			Dokumentenorientierte Datenbanken
+				Die Daten werden als Dokumente, versehen mit Attributen gespeichert.
+				MongoDB, CouchDB, Lotus Notes
+
+
+Postgres
+	Vorteile:
+		- grosse Community, die am stärksten wachsende DB
+		- Opensource
+		- hohe Zuverlässigkeit
+		- Gute Performence
+		- viele Features
+		- seit 1987
+
+sudo vim /etc/apt/sources.list.d/pgdg.list
+
+deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main
+
+
+sudo apt-get install wget ca-certificates
+
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+
+sudo apt-get install postgresql-9.5
+
+service postgresql status
+
+sudo postgresql psql postgres
+
+\l zeigt die vorhandenen Datenbanken an
+\q geht daus der Ansicht wieder raus
+
+CREATE USER wiggerand WITH SUPERUSER ENCRYPTED PASSWORD '1234';
+
+CREATE DATABASE wiggerand OWNER wiggerand;
+
+\q aus der Datenbank rausgehen
+
+psql loggt sich gleich als wiggerand ein
+
+Neue Datenbak anlegen
+
+CREATE DATABASE customers;
+
+überprüfen mit \l
+
+\q aus der Datenbank gehen und mit psql customer;
+als customer einloggen
+
+Benutzer wechseln von wiggerand als customer
+\c customer;
+
+1. Datenbank anlegen g16
+	CREATE DATABASE g16
+	\c g16
+2. Dort eine Tabelle customers anlegen, mit den Spalten: id SERIAL, first_name VARCHAR(50),last_name VARCHAR(50), address VARCHAR(20), zip CHAR(5), city VARCHAR(30), gender CHAR(1), email: VARCHAR(30)
+	g16=# CREATE TABLE customers(id SERIAL, first_name VARCHAR(50), last_name VARCHAR(50), address VARCHAR(30), zip CHAR(5), city VARCHAR(40), gender CHAR(1), email VARCHAR(50), PRIMARY KEY(id));
+3. Füllen Sie die Tabelle mit 2 Datensätzen.
+	g16=# INSERT INTO customers VALUES('1', 'Peter', 'Pan', 'Hermelinweg 8', '22159', 'Hamburg', 'm', 'peter@gmx.de');
+
+Anzeigen lassen mit select * from customers;
+
+$dbconnect = pg_connect("host=localhost dbname=g16 user=wiggerand password=1234"); 
+        $query = "SELECT * FROM customers" 
+        $result = pg_query($query); 
+        var_dump($result); ?>

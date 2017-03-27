@@ -3,12 +3,13 @@ Verzeichnis und Dateien anlegen
 	sudo touch /var/www/html/webneu/index.php
 	....
 	sudo chown -R www-data:www-data webneu
+	Ändert den Benutzer root in www-data:www-data
 
 Virtualhost anlegen
 cd /etc/apache2/sites-available
 sudo vim webneu.conf
 	<Virtualhost *:80>
-		ServerName webneu.ubuntuserver.local
+	ServerName webneu.ubuntuserver.local
 		DocumentRoot /var/www/html/webneu
 	</Virtualhost>
 

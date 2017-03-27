@@ -1,0 +1,87 @@
+1. Kopieren Sie oder legen Sie eine neue virtuelle Masccat /etc/hine an, nutzen Sie Ubuntu 16.04. Der Admin-User heißt theo.
+2.a Installieren Sie SSH, erstellen eine direkte Verbindung zwischen Client und Server, über einen Austausch des privaten User-Schlüssels Ihres Desktoprechners.//					  sudo apt-get install sshd-server
+Vom Clienten auf den Server einloggen ssh wiggerand@172.16.253.15
+
+3.b Legen Sie einen neuen Benutzer webadmin an, der die sudo-Berechtigungen bekommt. 
+usermod -a -G sudo  webadmin /Gehört der Gruppe sudo an!
+
+Deaktivieren Sie den Zugriff auf Root von einem externen Rechner.
+
+sudo passwd um ein root Password zu setzen
+Un den root deaktivieren mit
+	sudo passwd -d root
+	
+	sudo visudo 
+	öffnet die sudoers.tmp im abgesicherten modus, überprüft jegliche eingabe um nichts zu zerstören!!!!!!!
+Den root in der datei auskommentieren!!
+
+Ändern des Ports auf dem webserver mit
+vim /etc/ssh/sshd_config
+Zum login vom clienten 
+ssh webadmin@172.16.253.46 -p 3333
+
+4.a Installieren Sie den Apache Webserver und einen konsolenbasierten Browser.
+
+sudo apt-get install aṕache2
+sudo apt-get install lynx
+
+
+4.b Testen Sie den Webserver mit einem Browseraufruf
+
+Beim Server unter /etc/host
+	127.0.0.1 webserver.local 
+	sowie unter /etc/hostname
+	webserver.local
+	eintragen
+
+Desweiteren muß beim clienten in der /etc/hosts folgendes eingetragen werden
+	ipadresse webserver.local
+
+
+4.c Installieren Sie das php-Modul des Webservers und aktivieren es
+
+	sudo apt-get install libapache2-mod-php.7.0
+	sudo a2enmod php7.0
+	sudo service apache2 restart
+
+4.d Legen Sie eine Seite an um die php-Installation zu testen und rufen Sie die Seite mit lynx auf
+
+	Hinzufügen einer index.php Seite
+
+
+	cd /var/www/html
+			sudo touch index.php
+			sudo vim index.php
+			<html>
+			<body>
+			<? php phpinfo(); ?>
+			</body>
+			</html>
+			Im browser ubuntuserver.local/index.php
+			
+
+5.a Erstellen Sie für den Webserver einen VirtuellenHost mit dem Namen sommer und legen dort eine index.php mit einer Ausgabe 'Hallo Sommer' an. Veranlassen Sie einen Reload des Webservers
+
+	Verzeichnis und Dateien anlegen
+	sudo mkdir /var/www/html/sommer
+	sudo touch /var/www/html/sommer/index.php
+	cd /var/www/html
+	sudo chown -R www-data:www-data sommer
+	Ändert den Benutzer root in www-data:www-data
+
+
+
+Virtualhost anlegen Sommer und Winter
+
+cd /etc/apache2/sites-available
+sudo vim webneu.conf
+	<Virtualhost *:80>
+	ServerName sommer.ubuntuserver.local
+		DocumentRoot /var/www/html/sommer
+	</Virtualhost>
+
+
+
+5.b Wiederholen Sie den Prozess mit winter und 'Hallo Winter'
+5.c. Die Seite winter.ihr_server_name.local (bzw. sommer ...) soll sowohl von der Konsole mit lynx,als auch von Ihrem Desktoprechner erreichbar sein. Nehmen Sie die entsprechenden Konfigurationen vor.
+6. Optional in Vorbereitung des nächsten Steps: recherchieren Sie wie Sie einen eigenen GIT-Server konfigurieren können.
