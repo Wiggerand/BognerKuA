@@ -60,9 +60,9 @@ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-
 
 sudo apt-get install postgresql-9.5
 
-service postgresql status
+service postgresql status #überprüft ob psql funktioniert
 
-sudo postgresql psql postgres
+sudo postgresql psql postgres #zeigt die Datenbanken an
 
 \l zeigt die vorhandenen Datenbanken an
 \q geht daus der Ansicht wieder raus
@@ -95,9 +95,34 @@ Benutzer wechseln von wiggerand als customer
 3. Füllen Sie die Tabelle mit 2 Datensätzen.
 	g16=# INSERT INTO customers VALUES('1', 'Peter', 'Pan', 'Hermelinweg 8', '22159', 'Hamburg', 'm', 'peter@gmx.de');
 
-Anzeigen lassen mit select * from customers;
+Anzeigen lassen mit SELECT * FROM customers;
 
 $dbconnect = pg_connect("host=localhost dbname=g16 user=wiggerand password=1234"); 
         $query = "SELECT * FROM customers" 
         $result = pg_query($query); 
         var_dump($result); ?>
+
+\d+ Datenbankname #zeigt die Spaltennamen an der Tabelle
+
+INDEXierung:
+
+	EXPLAIN SELECT id, email FROM customers WHERE email='x';
+
+	CREATE INDEX ix_customer_email ON customers(email);	#gibt für die suche eine Optimierung der Schnelligkeit
+
+	EXPLAIN SELECT id, email FROM customers WHERE email='x';
+
+In der psql:
+
+	\! mkdir ~/dumps
+	\copy customers to ~/dumps/customers.csv
+
+In der Bash: (Terminator) Kopiert die Datenbank
+	pg_dump -c DATENBANKNAME > dump/customers2.csv
+
+
+DELETE FROM customers;	#löscht die Inhalte der Tabelle
+
+Aus der Bash:
+	psql DATENBANKNAME (g16) < dump/customers2.csv	#Stellt die gespeicherte csv Datenbank wieder her
+
